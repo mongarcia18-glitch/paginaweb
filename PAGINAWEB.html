@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lo que aprendimos en clase de Informática</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6fb; color: #1a1a2e; }
+  .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; text-align: center; padding: 70px 20px 60px; }
+  .hero .badge { display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 6px 18px; font-size: 13px; letter-spacing: 1px; margin-bottom: 22px; color: #a8c6fa; }
+  .hero h1 { font-size: 2.8rem; font-weight: 700; line-height: 1.2; margin-bottom: 16px; color: white; }
+  .hero h1 span { color: #53d8fb; }
+  .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 560px; margin: 0 auto; line-height: 1.6; }
+  .nav { background: white; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; padding: 14px 20px; position: sticky; top: 0; z-index: 100; }
+  .nav a { text-decoration: none; padding: 7px 16px; border-radius: 20px; font-size: 13px; font-weight: 500; color: #4a5568; border: 1px solid #e2e8f0; transition: all 0.2s; }
+  .nav a:hover { background: #0f3460; color: white; border-color: #0f3460; }
+  .section { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
+  .section-title { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+  .section-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .section h2 { font-size: 1.6rem; font-weight: 700; color: #1a1a2e; }
+  .section .subtitle { color: #718096; font-size: 0.97rem; margin-bottom: 32px; margin-left: 58px; }
+  .divider { border: none; border-top: 1px solid #e2e8f0; margin: 0; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .card { background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px; }
+  .card .tag { display: inline-block; font-family: 'Courier New', monospace; font-size: 13px; font-weight: 700; background: #eef2ff; color: #3730a3; border-radius: 6px; padding: 4px 10px; margin-bottom: 10px; }
+  .card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; color: #1a1a2e; }
+  .card p { font-size: 0.85rem; color: #718096; line-height: 1.5; }
+  .code-block { background: #1a1a2e; border-radius: 14px; overflow: hidden; margin-bottom: 24px; }
+  .code-header { background: #0f3460; padding: 10px 18px; display: flex; align-items: center; gap: 10px; }
+  .code-header span { color: #a8c6fa; font-size: 13px; font-weight: 500; }
+  .dots { display: flex; gap: 6px; }
+  .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; } .dot.y { background: #febc2e; } .dot.g { background: #28c840; }
+  .code-body { padding: 20px 22px; }
+  .code-body pre { font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.7; color: #e2e8f0; white-space: pre-wrap; }
+  .hl-tag { color: #53d8fb; } .hl-attr { color: #ffd700; } .hl-val { color: #a8ff78; } .hl-comment { color: #718096; font-style: italic; } .hl-text { color: #e2e8f0; }
+  .result-box { background: white; border: 2px dashed #cbd5e0; border-radius: 14px; padding: 24px; margin-bottom: 32px; }
+  .result-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #a0aec0; margin-bottom: 14px; }
+  .demo-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .demo-table th { background: #0f3460; color: white; padding: 10px 14px; text-align: left; }
+  .demo-table td { padding: 9px 14px; border-bottom: 1px solid #e2e8f0; }
+  .demo-table tr:nth-child(even) td { background: #f7fafc; }
+  .demo-form { max-width: 440px; }
+  .demo-form .field { margin-bottom: 14px; }
+  .demo-form label { display: block; font-size: 13px; font-weight: 600; color: #4a5568; margin-bottom: 5px; }
+  .demo-form input[type=text], .demo-form select, .demo-form textarea { width: 100%; padding: 9px 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 14px; color: #1a1a2e; background: white; outline: none; }
+  .demo-form .row { display: flex; gap: 12px; }
+  .demo-form .row .field { flex: 1; }
+  .demo-btn { background: #0f3460; color: white; border: none; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; }
+  .demo-btn-ghost { background: white; color: #4a5568; border: 1px solid #cbd5e0; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; margin-left: 8px; }
+  .demo-list { font-size: 15px; line-height: 2; }
+  .demo-list ul { list-style: disc; padding-left: 22px; }
+  .demo-list ol { list-style: decimal; padding-left: 22px; }
+  .demo-list ul ul { list-style: circle; margin-top: 4px; }
+  .blog-entry { background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; margin-bottom: 16px; }
+  .blog-entry .meta { font-size: 12px; color: #a0aec0; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .blog-entry .cat { background: #eef2ff; color: #3730a3; border-radius: 10px; padding: 2px 10px; font-size: 11px; font-weight: 600; }
+  .blog-entry h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; color: #1a1a2e; }
+  .blog-entry p { font-size: 14px; color: #718096; line-height: 1.6; }
+  .link-list { list-style: none; padding: 0; }
+  .link-list li { padding: 12px 16px; border-radius: 10px; display: flex; align-items: center; gap: 12px; border: 1px solid #e2e8f0; margin-bottom: 10px; background: white; }
+  .link-num { width: 28px; height: 28px; border-radius: 50%; background: #0f3460; color: white; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .link-list a { color: #0f3460; text-decoration: none; font-weight: 500; font-size: 15px; }
+  .github-step { display: flex; gap: 16px; align-items: flex-start; padding: 16px; background: white; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 12px; }
+  .github-num { width: 32px; height: 32px; border-radius: 50%; background: #1a1a2e; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+  .github-step h4 { font-size: 14px; font-weight: 700; color: #1a1a2e; margin-bottom: 4px; }
+  .github-step p { font-size: 13px; color: #718096; line-height: 1.5; }
+  .footer { background: #1a1a2e; color: rgba(255,255,255,0.6); text-align: center; padding: 32px 20px; font-size: 14px; }
+  .footer strong { color: white; }
+  @media (max-width: 600px) { .hero h1 { font-size: 1.9rem; } .section { padding: 40px 16px; } }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">&#127891; Exposición de clase · Informática</div>
+  <h1>Lo que aprendimos sobre<br><span>HTML y páginas web</span></h1>
+  <p>Una guía visual de todo lo que hemos practicado: estructura, etiquetas, tablas, formularios, cookies y GitHub.</p>
+</div>
+
+<nav class="nav">
+  <a href="#estructura">Estructura</a>
+  <a href="#etiquetas">Etiquetas</a>
+  <a href="#listas">Listas</a>
+  <a href="#tablas">Tablas</a>
+  <a href="#formularios">Formularios</a>
+  <a href="#enlaces">Enlaces</a>
+  <a href="#blog">Blog</a>
+  <a href="#cookies-info">Cookies</a>
+  <a href="#comportamiento">Comportamiento</a>
+  <a href="#github">GitHub</a>
+</nav>
+
+<!-- 1. ESTRUCTURA -->
+<div id="estructura" class="section">
+  <div class="section-title"><div class="section-icon" style="background:#eef2ff;">🏗️</div><h2>La estructura de toda página web</h2></div>
+  <p class="subtitle">Toda página HTML tiene siempre la misma base. Es como el esqueleto del cuerpo.</p>
+  <div class="code-block">
+    <div class="code-header"><div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div><span>mipagina.html</span></div>
+    <div class="code-body"><pre><span class="hl-tag">&lt;HTML&gt;</span>               <span class="hl-comment">← empieza todo</span>
+  <span class="hl-tag">&lt;HEAD&gt;</span>             <span class="hl-comment">← cabecera (no se ve en pantalla)</span>
+    <span class="hl-tag">&lt;TITLE&gt;</span><span class="hl-text">Mi página</span><span class="hl-tag">&lt;/TITLE&gt;</span>  <span class="hl-comment">← título de la pestaña</span>
+  <span class="hl-tag">&lt;/HEAD&gt;</span>
+  <span class="hl-tag">&lt;BODY&gt;</span>             <span class="hl-comment">← aquí va todo lo visible</span>
+    <span class="hl-comment">... todo el contenido ...</span>
+  <span class="hl-tag">&lt;/BODY&gt;</span>
+<span class="hl-tag">&lt;/HTML&gt;</span>              <span class="hl-comment">← termina todo</span></pre></div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">💡 Qué hace cada parte</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;">
+      <div style="background:#eef2ff;border-radius:10px;padding:14px;"><div style="font-family:monospace;font-weight:700;color:#3730a3;margin-bottom:6px;">&lt;HTML&gt;</div><div style="font-size:13px;color:#4a5568;">Le dice al navegador que esto es una página web</div></div>
+      <div style="background:#f0fff4;border-radius:10px;padding:14px;"><div style="font-family:monospace;font-weight:700;color:#276749;margin-bottom:6px;">&lt;HEAD&gt;</div><div style="font-size:13px;color:#4a5568;">Información sobre la página. No se muestra en pantalla.</div></div>
+      <div style="background:#fffbeb;border-radius:10px;padding:14px;"><div style="font-family:monospace;font-weight:700;color:#92400e;margin-bottom:6px;">&lt;TITLE&gt;</div><div style="font-size:13px;color:#4a5568;">El texto que aparece en la pestaña del navegador.</div></div>
+      <div style="background:#fff5f5;border-radius:10px;padding:14px;"><div style="font-family:monospace;font-weight:700;color:#9b2335;margin-bottom:6px;">&lt;BODY&gt;</div><div style="font-size:13px;color:#4a5568;">Todo lo que se ve en pantalla va aquí dentro.</div></div>
+    </div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 2. ETIQUETAS -->
+<div id="etiquetas" class="section">
+  <div class="section-title"><div class="section-icon" style="background:#f0fff4;">🏷️</div><h2>Las etiquetas básicas</h2></div>
+  <p class="subtitle">Una etiqueta es una instrucción entre corchetes angulares. Casi todas tienen apertura y cierre.</p>
+  <div class="cards">
+    <div class="card"><div class="tag">&lt;H1&gt;...&lt;H6&gt;</div><h3>Encabezados</h3><p>Títulos de diferente tamaño. H1 es el más grande, H6 el más pequeño.</p></div>
+    <div class="card"><div class="tag">&lt;P&gt;</div><h3>Párrafo</h3><p>Agrupa un bloque de texto con espacio arriba y abajo.</p></div>
+    <div class="card"><div class="tag">&lt;B&gt; y &lt;I&gt;</div><h3>Negrita y cursiva</h3><p><b>Negrita</b> para resaltar. <i>Cursiva</i> para énfasis.</p></div>
+    <div class="card"><div class="tag">&lt;HR&gt;</div><h3>Línea horizontal</h3><p>Dibuja una línea de separación. Sin cierre.</p></div>
+    <div class="card"><div class="tag">&lt;BR&gt;</div><h3>Salto de línea</h3><p>Baja a la siguiente línea sin nuevo párrafo.</p></div>
+    <div class="card"><div class="tag">&lt;CENTER&gt;</div><h3>Centrar</h3><p>Centra el contenido en la pantalla.</p></div>
+    <div class="card"><div class="tag">&lt;FONT&gt;</div><h3>Fuente y color</h3><p>Cambia tamaño (SIZE) y color (COLOR) del texto.</p></div>
+    <div class="card"><div class="tag">&lt;IMG&gt;</div><h3>Imagen</h3><p>Inserta una foto con SRC="nombre.jpg".</p></div>
+    <div class="card"><div class="tag">BGCOLOR</div><h3>Fondo de página</h3><p>Atributo de BODY para cambiar el color de fondo.</p></div>
+  </div>
+  <div class="code-block">
+    <div class="code-header"><div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div><span>Ejemplo</span></div>
+    <div class="code-body"><pre><span class="hl-tag">&lt;H1&gt;&lt;CENTER&gt;</span><span class="hl-text">Mi primera página</span><span class="hl-tag">&lt;/CENTER&gt;&lt;/H1&gt;</span>
+<span class="hl-tag">&lt;HR&gt;</span>
+<span class="hl-tag">&lt;P&gt;</span><span class="hl-text">Texto </span><span class="hl-tag">&lt;B&gt;</span><span class="hl-text">negrita</span><span class="hl-tag">&lt;/B&gt;</span><span class="hl-text"> y </span><span class="hl-tag">&lt;I&gt;</span><span class="hl-text">cursiva</span><span class="hl-tag">&lt;/I&gt;</span><span class="hl-tag">&lt;/P&gt;</span>
+<span class="hl-tag">&lt;FONT</span> <span class="hl-attr">COLOR=</span><span class="hl-val">"RED"</span> <span class="hl-attr">SIZE=</span><span class="hl-val">5</span><span class="hl-tag">&gt;</span><span class="hl-text">Texto rojo grande</span><span class="hl-tag">&lt;/FONT&gt;</span></pre></div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">👁️ Resultado</div>
+    <h1 style="text-align:center;font-size:1.6rem;margin-bottom:10px;">Mi primera página</h1>
+    <hr style="margin-bottom:12px;">
+    <p style="margin-bottom:8px;">Texto <b>negrita</b> y <i>cursiva</i></p>
+    <span style="color:red;font-size:1.2rem;">Texto rojo grande</span>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 3. LISTAS -->
+<div id="listas" class="section">
+  <div class="section-title"><div class="section-icon" style="background:#fffbeb;">📋</div><h2>Listas ordenadas y desordenadas</h2></div>
+  <p class="subtitle">UL para viñetas, OL para números, LI para cada elemento.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;">
+    <div class="code-block">
+      <div class="code-header"><div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div><span>&lt;UL&gt; sin orden</span></div>
+      <div class="code-body"><pre><span class="hl-tag">&lt;UL&gt;</span>
+  <span class="hl-tag">&lt;LI&gt;</span><span class="hl-text">El cine</span>
+  <span class="hl-tag">&lt;LI&gt;</span><span class="hl-text">Deporte</span>
+    <span class="hl-tag">&lt;UL&gt;</span>
+      <span class="hl-tag">&lt;LI&gt;</span><span class="hl-text">Natacion</span>
+      <span class="hl-tag">&lt;LI&gt;</span><span class="hl-text">Baloncesto</span>
+    <span class="hl-tag">&lt;/UL&gt;</span>
+<span class="hl-tag">&lt;/UL&gt;</span></pre></div>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div><span>&lt;OL&gt; numerada</span></div>
+      <div class="code-body"><pre><span class="hl-tag">&lt;OL&gt;</span>
+  <span class="hl-tag">&lt;LI&gt;</span><span class="hl-text">El rock</span>
+  <span class="hl-tag">&lt;LI&gt;</span><span class="hl-text">El jazz</span>
+  <span class="hl-tag">&lt;LI&gt;</span><span class="hl-text">Clasica</span>
+<span class="hl-tag">&lt;/OL&gt;</span></pre></div>
+    </div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">👁️ Resultado</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;" class="demo-list">
+      <div><p style="font-weight:600;margin-bottom:8px;font-size:14px;color:#4a5568;">Viñetas ●</p><ul><li>El cine</li><li>Deporte<ul><li>Natación</li><li>Baloncesto</li></ul></li></ul></div>
+      <div><p style="font-weight:600;margin-bottom:8px;font-size:14px;color:#4a5568;">Números 1 2 3</p><ol><li>El rock</li><li>El jazz</li><li>Clásica</li></ol></div>
+    </div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 4. TABLAS -->
+<div id="tablas" class="section">
+  <div class="section-title"><div class="section-icon" style="background:#e6f4ff;">📊</div><h2>Tablas</h2></div>
+  <p class="subtitle">Organizan información en filas y columnas. TABLE → TR → TH o TD.</p>
+  <div class="code-block">
+    <div class="code-header"><div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div><span>Estructura</span></div>
+    <div class="code-body"><pre><span class="hl-tag">&lt;TABLE</span> <span class="hl-attr">BORDER=</span><span class="hl-val">1</span> <span class="hl-attr">CELLPADDING=</span><span class="hl-val">6</span><span class="hl-tag">&gt;</span>
+  <span class="hl-tag">&lt;TR&gt;</span>  <span class="hl-tag">&lt;TH&gt;</span><span class="hl-text">Nombre</span><span class="hl-tag">&lt;/TH&gt;</span>  <span class="hl-tag">&lt;TH&gt;</span><span class="hl-text">Nota</span><span class="hl-tag">&lt;/TH&gt;</span>  <span class="hl-tag">&lt;/TR&gt;</span>
+  <span class="hl-tag">&lt;TR&gt;</span>  <span class="hl-tag">&lt;TD&gt;</span><span class="hl-text">Ana</span><span class="hl-tag">&lt;/TD&gt;</span>    <span class="hl-tag">&lt;TD&gt;</span><span class="hl-text">9</span><span class="hl-tag">&lt;/TD&gt;</span>    <span class="hl-tag">&lt;/TR&gt;</span>
+<span class="hl-tag">&lt;/TABLE&gt;</span>
+<span class="hl-comment">TR=fila  TH=cabecera  TD=celda  COLSPAN=unir columnas</span></pre></div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">👁️ Horario de ejemplo</div>
+    <div style="overflow-x:auto;">
+      <table class="demo-table">
+        <tr><th>Hora</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th></tr>
+        <tr><td><b>8:00</b></td><td>Matemáticas</td><td>Inglés</td><td>Matemáticas</td><td>Lengua</td><td>Inglés</td></tr>
+        <tr><td><b>9:00</b></td><td>Lengua</td><td>Informática</td><td>Inglés</td><td>Informática</td><td>Matemáticas</td></tr>
+        <tr style="background:#fef9c3;"><td colspan="6" style="text-align:center;font-weight:600;color:#854d0e;">☕ RECREO 11:00–11:30 (COLSPAN=6)</td></tr>
+        <tr><td><b>11:30</b></td><td>Informática</td><td>Historia</td><td>Ciencias</td><td>Historia</td><td>Lengua</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 5. FORMULARIOS -->
+<div id="formularios" class="section">
+  <div class="section-title"><div class="section-icon" style="background:#fff5f5;">📝</div><h2>Formularios</h2></div>
+  <p class="subtitle">Permiten al usuario introducir datos. Los datos llegan por correo gracias a Formspree.</p>
+  <div class="code-block">
+    <div class="code-header"><div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div><span>Tipos de campos</span></div>
+    <div class="code-body"><pre><span class="hl-tag">&lt;FORM</span> <span class="hl-attr">ACTION=</span><span class="hl-val">"https://formspree.io/f/xgopgdel"</span> <span class="hl-attr">METHOD=</span><span class="hl-val">"POST"</span><span class="hl-tag">&gt;</span>
+  <span class="hl-tag">&lt;INPUT</span> <span class="hl-attr">TYPE=</span><span class="hl-val">"TEXT"</span><span class="hl-tag">&gt;</span>      <span class="hl-comment">← texto</span>
+  <span class="hl-tag">&lt;SELECT&gt;&lt;OPTION&gt;</span><span class="hl-tag">&lt;/SELECT&gt;</span>  <span class="hl-comment">← lista</span>
+  <span class="hl-tag">&lt;INPUT</span> <span class="hl-attr">TYPE=</span><span class="hl-val">"RADIO"</span><span class="hl-tag">&gt;</span>     <span class="hl-comment">← solo uno</span>
+  <span class="hl-tag">&lt;INPUT</span> <span class="hl-attr">TYPE=</span><span class="hl-val">"CHECKBOX"</span><span class="hl-tag">&gt;</span>  <span class="hl-comment">← varias</span>
+  <span class="hl-tag">&lt;TEXTAREA&gt;&lt;/TEXTAREA&gt;</span>  <span class="hl-comment">← area grande</span>
+  <span class="hl-tag">&lt;INPUT</span> <span class="hl-attr">TYPE=</span><span class="hl-val">"SUBMIT"</span><span class="hl-tag">&gt;</span>    <span class="hl-comment">← boton enviar</span>
+<span class="hl-tag">&lt;/FORM&gt;</span></pre></div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">👁️ Formulario real — los datos llegan por correo</div>
+    <form class="demo-form" action="https://formspree.io/f/xgopgdel" method="POST">
+      <div class="row">
+        <div class="field"><label>Nombre</label><input type="text" name="nombre" placeholder="Tu nombre"></div>
+        <div class="field"><label>Apellidos</label><input type="text" name="apellidos" placeholder="Tus apellidos"></div>
+      </div>
+      <div class="field"><label>Asignatura favorita</label><select name="asignatura"><option>Informática</option><option>Matemáticas</option><option>Lengua</option><option>Historia</option></select></div>
+      <div class="field">
+        <label>¿Tienes ordenador?</label>
+        <div style="display:flex;gap:20px;margin-top:6px;">
+          <label style="font-weight:400;display:flex;align-items:center;gap:6px;"><input type="radio" name="ordenador" value="Si"> Sí</label>
+          <label style="font-weight:400;display:flex;align-items:center;gap:6px;"><input type="radio" name="ordenador" value="No"> No</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Redes sociales</label>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:6px;">
+          <label style="font-weight:400;display:flex;align-items:center;gap:6px;"><input type="checkbox" name="redes" value="Instagram"> Instagram</label>
+          <label style="font-weight:400;display:flex;align-items:center;gap:6px;"><input type="checkbox" name="redes" value="TikTok"> TikTok</label>
+          <label style="font-weight:400;display:flex;align-items:center;gap:6px;"><input type="checkbox" name="redes" value="YouTube"> YouTube</label>
+        </div>
+      </div>
+      <div class="field"><label>Comentario</label><textarea name="mensaje" rows="3" placeholder="Escribe aquí..."></textarea></div>
+      <button type="submit" class="demo-btn">Enviar</button>
+      <button type="reset" class="demo-btn-ghost">Borrar</button>
+    </form>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 6. ENLACES -->
+<div id="enlaces" class="section">
+  <div class="section-title"><div class="section-icon" style="background:#f0fff4;">🔗</div><h2>Hiperenlaces</h2></div>
+  <p class="subtitle">Con la etiqueta &lt;A HREF&gt; creamos enlaces que llevan a otras páginas al hacer clic.</p>
+  <div class="code-block">
+    <div class="code-header"><div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div><span>Sintaxis</span></div>
+    <div class="code-body"><pre><span class="hl-tag">&lt;A</span> <span class="hl-attr">HREF=</span><span class="hl-val">"http://www.google.com"</span><span class="hl-tag">&gt;</span><span class="hl-text">Ir a Google</span><span class="hl-tag">&lt;/A&gt;</span>
+<span class="hl-tag">&lt;A</span> <span class="hl-attr">HREF=</span><span class="hl-val">"pagina2.html"</span><span class="hl-tag">&gt;</span><span class="hl-text">Ir a mi segunda pagina</span><span class="hl-tag">&lt;/A&gt;</span></pre></div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">👁️ Mis páginas favoritas</div>
+    <ul class="link-list">
+      <li><div class="link-num">1</div><a href="http://www.youtube.com" target="_blank">YouTube</a></li>
+      <li><div class="link-num">2</div><a href="http://www.google.com" target="_blank">Google</a></li>
+      <li><div class="link-num">3</div><a href="http://www.wikipedia.org" target="_blank">Wikipedia</a></li>
+    </ul>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 7. BLOG -->
+<div id="blog" class="section">
+  <div class="section-title"><div class="section-icon" style="background:#faf5ff;">✍️</div><h2>Blog</h2></div>
+  <p class="subtitle">Serie de entradas con fecha, título y contenido. En HTML se hace con tablas y párrafos.</p>
+  <div class="result-box">
+    <div class="result-label">👁️ Blog de ejemplo</div>
+    <div class="blog-entry">
+      <div class="meta">📅 14 de abril de 2025 <span class="cat">Informática</span></div>
+      <h3>Mi primera entrada: aprendiendo HTML</h3>
+      <p>Hoy hemos aprendido a crear páginas web con el Bloc de notas. Ver cómo el código se convierte en una página real es increíble.</p>
+    </div>
+    <div class="blog-entry" style="border-left:3px solid #0f3460;">
+      <div class="meta">📅 15 de abril de 2025 <span class="cat">Informática</span></div>
+      <h3>Segunda entrada: tablas, formularios y más</h3>
+      <p>Hoy hemos ido un paso más lejos con tablas para organizar datos y formularios para recoger información del usuario.</p>
+    </div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 8. COOKIES -->
+<div id="cookies-info" class="section">
+  <div class="section-title"><div class="section-icon" style="background:#fff8e1;">🍪</div><h2>¿Qué son las cookies y qué datos recogen?</h2></div>
+  <p class="subtitle">Cuando aceptas cookies en una web, le das permiso para recoger información tuya. Aquí lo demostramos en vivo.</p>
+  <div class="cards">
+    <div class="card" style="border-left:4px solid #e53e3e;"><div class="tag" style="background:#fff5f5;color:#c53030;">IP</div><h3>Dirección IP</h3><p>Identifica tu conexión. Permite saber tu ciudad y país aproximadamente.</p></div>
+    <div class="card" style="border-left:4px solid #dd6b20;"><div class="tag" style="background:#fffaf0;color:#c05621;">Dispositivo</div><h3>Tu dispositivo</h3><p>Saben si usas móvil o PC y tu resolución de pantalla.</p></div>
+    <div class="card" style="border-left:4px solid #d69e2e;"><div class="tag" style="background:#fffff0;color:#b7791f;">Navegador</div><h3>Tu navegador</h3><p>Chrome, Firefox, Safari... Tu "huella digital".</p></div>
+    <div class="card" style="border-left:4px solid #38a169;"><div class="tag" style="background:#f0fff4;color:#276749;">Tiempo</div><h3>Cuánto tiempo</h3><p>Saben cuánto llevas, cuándo entraste y cuándo te fuiste.</p></div>
+    <div class="card" style="border-left:4px solid #3182ce;"><div class="tag" style="background:#ebf8ff;color:#2b6cb0;">Clics</div><h3>Lo que tocas</h3><p>Registran cada clic que das para saber qué te llama la atención.</p></div>
+    <div class="card" style="border-left:4px solid #805ad5;"><div class="tag" style="background:#faf5ff;color:#553c9a;">Marketing</div><h3>Publicidad</h3><p>Con todo esto crean tu perfil para mostrarte anuncios personalizados.</p></div>
+  </div>
+
+  <div style="background:#1a1a2e;border-radius:14px;padding:24px;margin-bottom:16px;">
+    <p style="color:#a8c6fa;font-size:13px;font-weight:600;margin-bottom:16px;">🔴 DEMOSTRACIÓN EN VIVO — acepta las cookies para ver qué se recoge de ti</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;">
+      <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;"><div style="color:#718096;font-size:11px;margin-bottom:4px;">IP</div><div style="color:#53d8fb;font-size:14px;font-weight:700;" id="spy-ip">—</div></div>
+      <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;"><div style="color:#718096;font-size:11px;margin-bottom:4px;">País / Ciudad</div><div style="color:#e2e8f0;font-size:13px;font-weight:600;" id="spy-loc">—</div></div>
+      <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;"><div style="color:#718096;font-size:11px;margin-bottom:4px;">Navegador</div><div style="color:#e2e8f0;font-size:13px;font-weight:600;" id="spy-browser">—</div></div>
+      <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;"><div style="color:#718096;font-size:11px;margin-bottom:4px;">Pantalla</div><div style="color:#e2e8f0;font-size:13px;font-weight:600;" id="spy-screen">—</div></div>
+      <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;"><div style="color:#718096;font-size:11px;margin-bottom:4px;">Dispositivo</div><div style="color:#e2e8f0;font-size:13px;font-weight:600;" id="spy-device">—</div></div>
+      <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;"><div style="color:#718096;font-size:11px;margin-bottom:4px;">Idioma</div><div style="color:#e2e8f0;font-size:13px;font-weight:600;" id="spy-lang">—</div></div>
+    </div>
+    <p style="color:#718096;font-size:12px;margin-top:14px;" id="spy-msg">👆 Acepta las cookies para ver tus datos en tiempo real</p>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 9. COMPORTAMIENTO -->
+<div id="comportamiento" class="section">
+  <div class="section-title"><div class="section-icon" style="background:#fff0f0;">👁️</div><h2>Lo que las cookies saben de tu comportamiento</h2></div>
+  <p class="subtitle">Además de quién eres, rastrean todo lo que haces. Este panel se actualiza en tiempo real mientras navegas.</p>
+  <div style="background:#1a1a2e;border-radius:14px;padding:24px;margin-bottom:24px;">
+    <p style="color:#a8c6fa;font-size:13px;font-weight:600;margin-bottom:16px;">📊 PANEL DE ESPIONAJE EN VIVO</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;">
+      <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:14px;"><div style="color:#718096;font-size:11px;margin-bottom:6px;">⏱ Tiempo en página</div><div style="color:#53d8fb;font-size:24px;font-weight:700;" id="b-tiempo">0s</div></div>
+      <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:14px;"><div style="color:#718096;font-size:11px;margin-bottom:6px;">📜 Página leída</div><div style="color:#a8ff78;font-size:24px;font-weight:700;" id="b-scroll">0%</div></div>
+      <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:14px;"><div style="color:#718096;font-size:11px;margin-bottom:6px;">🖱 Clics dados</div><div style="color:#ffd700;font-size:24px;font-weight:700;" id="b-clics">0</div></div>
+      <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:14px;"><div style="color:#718096;font-size:11px;margin-bottom:6px;">📍 Sección actual</div><div style="color:#e2e8f0;font-size:13px;font-weight:600;" id="b-seccion">—</div></div>
+      <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:14px;"><div style="color:#718096;font-size:11px;margin-bottom:6px;">🕐 Hora de entrada</div><div style="color:#e2e8f0;font-size:13px;font-weight:600;" id="b-entrada">—</div></div>
+      <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:14px;"><div style="color:#718096;font-size:11px;margin-bottom:6px;">📖 ¿Leyó todo?</div><div style="color:#e2e8f0;font-size:13px;font-weight:600;" id="b-leido">No todavía</div></div>
+    </div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">💡 Por qué les importa a las empresas</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+      <div style="padding:14px;background:#fff5f5;border-radius:10px;"><div style="font-weight:700;color:#c53030;margin-bottom:6px;">Poco tiempo</div><div style="font-size:13px;color:#718096;">El contenido no te interesa. Cambian el diseño o los anuncios.</div></div>
+      <div style="padding:14px;background:#f0fff4;border-radius:10px;"><div style="font-weight:700;color:#276749;margin-bottom:6px;">Lees todo</div><div style="font-size:13px;color:#718096;">Eres un usuario interesado. Te muestran más contenido similar.</div></div>
+      <div style="padding:14px;background:#ebf8ff;border-radius:10px;"><div style="font-weight:700;color:#2b6cb0;margin-bottom:6px;">Muchos clics</div><div style="font-size:13px;color:#718096;">Detectan qué elementos llaman tu atención para optimizar la web.</div></div>
+      <div style="padding:14px;background:#faf5ff;border-radius:10px;"><div style="font-weight:700;color:#553c9a;margin-bottom:6px;">Cuándo te vas</div><div style="font-size:13px;color:#718096;">Si cierras, a veces te llega un email: "¡Vuelve, te dejaste algo!"</div></div>
+    </div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 10. GITHUB -->
+<div id="github" class="section">
+  <div class="section-title"><div class="section-icon" style="background:#f6f8fa;">🐙</div><h2>GitHub y GitHub Pages</h2></div>
+  <p class="subtitle">GitHub guarda y comparte código. GitHub Pages publica tu página web gratis con URL pública.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;">
+    <div class="card"><div class="tag" style="background:#f6f8fa;color:#24292e;">¿Qué es GitHub?</div><h3>Un "Google Drive para código"</h3><p>Guarda proyectos, muestra el historial de cambios y permite trabajar en equipo. Lo usan millones de programadores.</p></div>
+    <div class="card"><div class="tag" style="background:#f6f8fa;color:#24292e;">GitHub Pages</div><h3>Hosting gratuito</h3><p>Convierte tu repositorio en una web real con URL pública. Gratis para siempre, sin publicidad.</p></div>
+  </div>
+  <p style="font-weight:700;font-size:15px;color:#1a1a2e;margin-bottom:16px;">Cómo publicar tu página en 5 pasos:</p>
+  <div class="github-step"><div class="github-num">1</div><div><h4>Crea cuenta en github.com</h4><p>Haz clic en "Sign up" y regístrate gratis con tu correo.</p></div></div>
+  <div class="github-step"><div class="github-num">2</div><div><h4>Crea un repositorio nuevo</h4><p>Clic en + → "New repository". Ponle nombre, márcalo como Public y activa "Add a README file".</p></div></div>
+  <div class="github-step"><div class="github-num">3</div><div><h4>Sube tu archivo HTML</h4><p>Add file → Upload files. Súbelo renombrado como index.html y haz clic en "Commit changes".</p></div></div>
+  <div class="github-step"><div class="github-num">4</div><div><h4>Activa GitHub Pages</h4><p>Settings → Pages. En Branch selecciona main y / (root). Guarda.</p></div></div>
+  <div class="github-step"><div class="github-num">5</div><div><h4>Tu URL está lista</h4><p>En 2 minutos aparece: https://tunombre.github.io/mi-repositorio. Compártela con quien quieras.</p></div></div>
+  <div style="background:#0f3460;border-radius:14px;padding:20px;margin-top:24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+    <div style="font-size:28px;">💡</div>
+    <div><div style="color:white;font-weight:700;margin-bottom:4px;">¿Por qué es importante?</div><div style="color:rgba(255,255,255,0.7);font-size:14px;">Antes necesitabas pagar un servidor para tener una web. Con GitHub Pages cualquiera puede publicar gratis en minutos. Es la herramienta que usan desarrolladores de todo el mundo.</div></div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Página creada por <strong>Tu Nombre</strong> · Clase de Informática · <strong>Curso 2024–2025</strong></p>
+  <p style="margin-top:8px;font-size:12px;">Hecha con HTML, CSS y JavaScript ✌️</p>
+</div>
+
+<!-- BANNER COOKIES -->
+<div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#1a1a2e;border-top:2px solid #53d8fb;padding:20px 28px;z-index:9999;display:flex;flex-wrap:wrap;align-items:center;gap:16px;">
+  <div style="flex:1;min-width:240px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+      <span style="font-size:22px;">🍪</span>
+      <span style="color:white;font-weight:700;font-size:16px;">Esta página usa cookies</span>
+    </div>
+    <p style="color:rgba(255,255,255,0.65);font-size:13px;line-height:1.5;">Si aceptas, recogeremos tu IP, navegador, dispositivo, tiempo en página y comportamiento.</p>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+    <button onclick="abrirConfig()" style="background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.25);padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">⚙️ Configurar</button>
+    <button onclick="rechazarCookies()" style="background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.25);padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">✗ Rechazar</button>
+    <button onclick="aceptarTodo()" style="background:#53d8fb;color:#1a1a2e;border:none;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">✓ Aceptar todo</button>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="cookie-modal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:10000;align-items:center;justify-content:center;">
+  <div style="background:white;border-radius:16px;padding:32px;max-width:480px;width:90%;margin:20px auto;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:6px;color:#1a1a2e;">⚙️ Configuración de cookies</h2>
+    <p style="font-size:13px;color:#718096;margin-bottom:24px;">Elige qué tipos de cookies permites.</p>
+    <div style="border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">
+      <div><div style="font-weight:600;font-size:14px;color:#1a1a2e;">Cookies necesarias</div><div style="font-size:12px;color:#718096;">Imprescindibles para que la web funcione.</div></div>
+      <div style="background:#e2e8f0;color:#718096;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;">Siempre activas</div>
+    </div>
+    <div style="border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">
+      <div><div style="font-weight:600;font-size:14px;color:#1a1a2e;">Cookies analíticas</div><div style="font-size:12px;color:#718096;">IP, ubicación, dispositivo, tiempo y comportamiento.</div></div>
+      <div id="track-an" onclick="toggleSwitch('cb-an','track-an')" style="position:relative;width:44px;height:24px;background:#0f3460;border-radius:24px;cursor:pointer;">
+        <div id="thumb-an" style="position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:white;border-radius:50%;transition:0.3s;transform:translateX(20px);"></div>
+        <input type="checkbox" id="cb-an" checked style="display:none;">
+      </div>
+    </div>
+    <div style="border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">
+      <div><div style="font-weight:600;font-size:14px;color:#1a1a2e;">Cookies de marketing</div><div style="font-size:12px;color:#718096;">Para mostrarte publicidad personalizada.</div></div>
+      <div id="track-mk" onclick="toggleSwitch('cb-mk','track-mk')" style="position:relative;width:44px;height:24px;background:#cbd5e0;border-radius:24px;cursor:pointer;">
+        <div id="thumb-mk" style="position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:white;border-radius:50%;transition:0.3s;transform:translateX(0);"></div>
+        <input type="checkbox" id="cb-mk" style="display:none;">
+      </div>
+    </div>
+    <div style="border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
+      <div><div style="font-weight:600;font-size:14px;color:#1a1a2e;">Cookies de preferencias</div><div style="font-size:12px;color:#718096;">Recuerdan tu idioma y configuración.</div></div>
+      <div id="track-pr" onclick="toggleSwitch('cb-pr','track-pr')" style="position:relative;width:44px;height:24px;background:#0f3460;border-radius:24px;cursor:pointer;">
+        <div id="thumb-pr" style="position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:white;border-radius:50%;transition:0.3s;transform:translateX(20px);"></div>
+        <input type="checkbox" id="cb-pr" checked style="display:none;">
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button onclick="cerrarModal()" style="flex:1;background:white;color:#4a5568;border:1px solid #cbd5e0;padding:11px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;">Cancelar</button>
+      <button onclick="guardarConfig()" style="flex:1;background:#0f3460;color:white;border:none;padding:11px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var SHEET = "https://script.google.com/macros/s/AKfycbwzJqqZ7IV9mOvaLQBF86FIRaTTId4XJVA_Tt6VX9ni-3EzHp4dS_B-PqFZQVat-Jsl0A/exec";
+var cookiesOK = false;
+var ipGuardada = '';
+var inicio = Date.now();
+var clics = 0;
+var maxScroll = 0;
+var horaEntrada = new Date().toLocaleTimeString('es-ES');
+document.getElementById('b-entrada').textContent = horaEntrada;
+
+setInterval(function() {
+  var s = Math.floor((Date.now() - inicio) / 1000);
+  var m = Math.floor(s / 60); s = s % 60;
+  document.getElementById('b-tiempo').textContent = m > 0 ? m + 'm ' + s + 's' : s + 's';
+}, 1000);
+
+window.addEventListener('scroll', function() {
+  var pct = Math.min(100, Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100));
+  if (pct > maxScroll) maxScroll = pct;
+  document.getElementById('b-scroll').textContent = maxScroll + '%';
+  if (maxScroll >= 95) { document.getElementById('b-leido').textContent = 'Si, leyo todo'; document.getElementById('b-leido').style.color = '#a8ff78'; }
+  var ids = ['estructura','etiquetas','listas','tablas','formularios','enlaces','blog','cookies-info','comportamiento','github'];
+  for (var i = ids.length - 1; i >= 0; i--) {
+    var el = document.getElementById(ids[i]);
+    if (el && el.getBoundingClientRect().top < 200) { document.getElementById('b-seccion').textContent = ids[i]; break; }
+  }
+});
+
+document.addEventListener('click', function() { clics++; document.getElementById('b-clics').textContent = clics; });
+
+window.addEventListener('beforeunload', function() {
+  if (!cookiesOK) return;
+  var s = Math.floor((Date.now() - inicio) / 1000);
+  var m = Math.floor(s / 60); s = s % 60;
+  var total = m > 0 ? m + 'm ' + s + 's' : s + 's';
+  navigator.sendBeacon(SHEET, JSON.stringify({
+    tipo: 'SALIDA',
+    ip: ipGuardada,
+    hora_salida: new Date().toLocaleTimeString('es-ES'),
+    tiempo_total: total,
+    clics: clics,
+    scroll: maxScroll + '%',
+    leyo_todo: maxScroll >= 95 ? 'Si' : 'No'
+  }));
+});
+
+function toggleSwitch(cbId, trackId) {
+  var cb = document.getElementById(cbId);
+  var track = document.getElementById(trackId);
+  var thumb = document.getElementById(trackId.replace('track-','thumb-'));
+  cb.checked = !cb.checked;
+  track.style.background = cb.checked ? '#0f3460' : '#cbd5e0';
+  thumb.style.transform = cb.checked ? 'translateX(20px)' : 'translateX(0)';
+}
+
+function ocultarBanner() { document.getElementById('cookie-banner').style.display = 'none'; }
+function abrirConfig() { document.getElementById('cookie-modal').style.display = 'flex'; }
+function cerrarModal() { document.getElementById('cookie-modal').style.display = 'none'; }
+
+function getBrowser() {
+  var u = navigator.userAgent;
+  if (u.indexOf('Edg') > -1) return 'Edge';
+  if (u.indexOf('OPR') > -1) return 'Opera';
+  if (u.indexOf('Firefox') > -1) return 'Firefox';
+  if (u.indexOf('Chrome') > -1) return 'Chrome';
+  if (u.indexOf('Safari') > -1) return 'Safari';
+  return 'Desconocido';
+}
+function getDevice() { return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ? 'Movil' : 'Escritorio'; }
+
+function enviar(payload) {
+  fetch(SHEET, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+}
+
+function recogerDatos() {
+  fetch('https://api.ipify.org?format=json')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      ipGuardada = d.ip;
+      return fetch('https://ipapi.co/' + d.ip + '/json/').then(function(r){ return r.json(); }).then(function(geo){
+        document.getElementById('spy-ip').textContent = d.ip;
+        document.getElementById('spy-loc').textContent = (geo.city||'—') + ', ' + (geo.country_name||'—');
+        document.getElementById('spy-browser').textContent = getBrowser();
+        document.getElementById('spy-screen').textContent = screen.width + 'x' + screen.height;
+        document.getElementById('spy-device').textContent = getDevice();
+        document.getElementById('spy-lang').textContent = navigator.language || '—';
+        document.getElementById('spy-msg').textContent = '✅ Datos enviados a Google Sheets en tiempo real';
+        document.getElementById('spy-msg').style.color = '#68d391';
+        cookiesOK = true;
+        enviar({
+          tipo: 'ENTRADA',
+          fecha: new Date().toLocaleDateString('es-ES'),
+          hora_entrada: horaEntrada,
+          ip: d.ip,
+          pais: geo.country_name || '—',
+          ciudad: geo.city || '—',
+          navegador: getBrowser(),
+          dispositivo: getDevice(),
+          pantalla: screen.width + 'x' + screen.height
+        });
+      });
+    })
+    .catch(function(){
+      ipGuardada = 'No disponible';
+      document.getElementById('spy-ip').textContent = 'No disponible';
+      document.getElementById('spy-msg').textContent = '⚠️ IP no disponible en local — sube a GitHub Pages';
+      document.getElementById('spy-msg').style.color = '#f6ad55';
+      cookiesOK = true;
+      enviar({
+        tipo: 'ENTRADA',
+        fecha: new Date().toLocaleDateString('es-ES'),
+        hora_entrada: horaEntrada,
+        ip: 'No disponible',
+        pais: '—', ciudad: '—',
+        navegador: getBrowser(),
+        dispositivo: getDevice(),
+        pantalla: screen.width + 'x' + screen.height
+      });
+    });
+}
+
+function aceptarTodo() { ocultarBanner(); recogerDatos(); }
+
+function rechazarCookies() {
+  ocultarBanner();
+  document.getElementById('spy-msg').textContent = '❌ Cookies rechazadas — no se recoge ningun dato';
+  document.getElementById('spy-msg').style.color = '#fc8181';
+}
+
+function guardarConfig() {
+  var an = document.getElementById('cb-an').checked;
+  cerrarModal(); ocultarBanner();
+  if (an) { recogerDatos(); } else { rechazarCookies(); }
+}
+</script>
+</body>
+</html>
